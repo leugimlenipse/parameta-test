@@ -1,0 +1,37 @@
+<xs:schema xmlns="http://www.w3.org/2001/XMLSchema"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://parameta.com/soapservice/compiled/employee"
+           xmlns:tns="http://parameta.com/soapservice/compiled/employee"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="employee">
+        <xs:sequence>
+            <xs:element name="names" type="xs:string"/>
+            <xs:element name="lastNames" type="xs:string"/>
+            <xs:element name="documentType" type="string"/>
+            <xs:element name="documentNumber" type="xs:string"/>
+            <xs:element name="birthDate" type="xs:date"/>
+            <xs:element name="hiringDate" type="xs:date"/>
+            <xs:element name="position" type="xs:string"/>
+            <xs:element name="salary" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="employeeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="tns:employee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- employee response with only the employee id-->
+    <xs:element name="employeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employeeId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
