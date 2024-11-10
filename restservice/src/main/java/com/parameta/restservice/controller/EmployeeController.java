@@ -111,8 +111,8 @@ public class EmployeeController {
                                                         @RequestParam(value = "lastNames") @Valid @NotBlank(message = "Los apellidos son obligatorios") String lastNames,
                                                         @RequestParam(value = "documentType") @Valid @NotBlank(message = "El tipo de documento es obligatorio") String documentType,
                                                         @RequestParam(value = "documentNumber") @Valid @NotBlank(message = "El número de documento es obligatorio") String documentNumber,
-                                                        @RequestParam(value = "birthDate") @DateTimeFormat(pattern = IConstants.DATE_FORMAT) @Valid @NotNull(message = "La fecha de nacimiento es obligatoria") @Past Date birthDate,
-                                                        @RequestParam(value = "hiringDate") @DateTimeFormat(pattern = IConstants.DATE_FORMAT) @Valid @NotNull(message = "La fecha de contratación es obligatoria") @PastOrPresent Date hiringDate,
+                                                        @RequestParam(value = "birthDate") @DateTimeFormat(pattern = IConstants.DATE_FORMAT) @Valid @NotNull(message = "La fecha de nacimiento es obligatoria") @Past(message = "La fecha de nacimiento debe ser anterior a la fecha actual") Date birthDate,
+                                                        @RequestParam(value = "hiringDate") @DateTimeFormat(pattern = IConstants.DATE_FORMAT) @Valid @NotNull(message = "La fecha de contratación es obligatoria") @PastOrPresent(message = "La fecha de contratación debe ser anterior o igual a la fecha actual") Date hiringDate,
                                                         @RequestParam(value = "position") @Valid @NotBlank(message = "El cargo es obligatorio") String position
                                                         ) {
         if (hiringDate.before(birthDate)) throw new ValidationException("La fecha de nacimiento debe ser anterior a la fecha de contratación");
