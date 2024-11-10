@@ -1,8 +1,7 @@
 package com.parameta.restservice.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -11,6 +10,9 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "EMPLEADOS", schema = "DBMASTER")
 public class EmployeeModel implements Serializable {
 

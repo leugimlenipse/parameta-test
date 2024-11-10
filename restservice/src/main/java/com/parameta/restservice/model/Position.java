@@ -2,8 +2,7 @@ package com.parameta.restservice.model;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -11,6 +10,9 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "CARGOS", schema = "DBMASTER")
 public class Position implements Serializable {
 

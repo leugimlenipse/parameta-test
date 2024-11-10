@@ -37,9 +37,8 @@ public class EmployeeServiceImpl implements IEmployeeServie {
     @Override
     public EmployeeDTO registerEmployee(EmployeeDTO dto) {
 
-        if (getTimeDiference(dto.getBirthDate()).getYears() < 18) {
-            return null;
-        }
+        if (getTimeDiference(dto.getBirthDate()).getYears() < 18)
+            throw new ValidationException("Employee must be at least 18 years old");
 
         var position = positionRepository.findByName(dto.getPosition().toUpperCase()).orElseThrow(() -> new DataNotFoundException("Position not found"));
         var document = documentTypeRepository.findByCode(dto.getDocumentType().toUpperCase()).orElseThrow(() -> new DataNotFoundException("Document type not found"));
