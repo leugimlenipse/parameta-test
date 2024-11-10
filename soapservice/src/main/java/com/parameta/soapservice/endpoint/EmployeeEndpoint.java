@@ -2,10 +2,8 @@ package com.parameta.soapservice.endpoint;
 
 import com.parameta.soapservice.compiled.employee.EmployeeRequest;
 import com.parameta.soapservice.compiled.employee.EmployeeResponse;
-import com.parameta.soapservice.model.EmployeeModel;
 import com.parameta.soapservice.service.interfaces.IEmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -22,12 +20,8 @@ public class EmployeeEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "employeeRequest")
     @ResponsePayload
     public EmployeeResponse registerEmployee(@RequestPayload EmployeeRequest request) {
-        EmployeeResponse response = new EmployeeResponse();
-//
-//        EmployeeModel employeeModel = new EmployeeModel();
-//        BeanUtils.copyProperties(request.getEmployee(), employeeModel);
-
         var employeeModel = this.employeeService.registerEmployee(request);
+        EmployeeResponse response = new EmployeeResponse();
         response.setEmployeeId(employeeModel.getId());
         return response;
     }
