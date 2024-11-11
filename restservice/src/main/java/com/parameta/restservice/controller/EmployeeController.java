@@ -82,11 +82,11 @@ public class EmployeeController {
                     ),
                     @Parameter(
                             name = "birthDate", description = "Employee's birth date", required = true,
-                            in = ParameterIn.QUERY, schema = @Schema(type = "string", format = "date")
+                            in = ParameterIn.QUERY, schema = @Schema(type = "string", format = "date", pattern = IConstants.DATE_FORMAT)
                     ),
                     @Parameter(
                             name = "hiringDate", description = "Employee's hiring date", required = true,
-                            in = ParameterIn.QUERY, schema = @Schema(type = "string", format = "date")
+                            in = ParameterIn.QUERY, schema = @Schema(type = "string", format = "date", pattern = IConstants.DATE_FORMAT)
                     ),
                     @Parameter(
                             name = "position", description = "Employee's position", required = true,
@@ -113,7 +113,8 @@ public class EmployeeController {
                                                         @RequestParam(value = "documentNumber") @Valid @NotBlank(message = "El número de documento es obligatorio") String documentNumber,
                                                         @RequestParam(value = "birthDate") @DateTimeFormat(pattern = IConstants.DATE_FORMAT) @Valid @NotNull(message = "La fecha de nacimiento es obligatoria") @Past(message = "La fecha de nacimiento debe ser anterior a la fecha actual") Date birthDate,
                                                         @RequestParam(value = "hiringDate") @DateTimeFormat(pattern = IConstants.DATE_FORMAT) @Valid @NotNull(message = "La fecha de contratación es obligatoria") @PastOrPresent(message = "La fecha de contratación debe ser anterior o igual a la fecha actual") Date hiringDate,
-                                                        @RequestParam(value = "position") @Valid @NotBlank(message = "El cargo es obligatorio") String position
+                                                        @RequestParam(value = "position") @Valid @NotBlank(message = "El cargo es obligatorio") String position,
+                                                        @RequestParam(value = "salary") @Valid @NotNull(message = "El salario es obligatorio") Double salary
                                                         ) {
         if (hiringDate.before(birthDate)) throw new ValidationException("La fecha de nacimiento debe ser anterior a la fecha de contratación");
         var employeeDTO = EmployeeDTO.builder()
@@ -124,6 +125,7 @@ public class EmployeeController {
                 .birthDate(birthDate)
                 .hiringDate(hiringDate)
                 .position(position)
+                .salary(salary)
                 .build();
 
         var response = this.employeeService.registerEmployee(employeeDTO);

@@ -13,7 +13,7 @@ import java.util.List;
 @Configuration
 public class SwaggerConfig {
 
-    @Value("localhost:8080${server.servlet.context-path}")
+    @Value("http://localhost:8080${server.servlet.context-path}")
     String SERVER_URL;
 
     @Bean
