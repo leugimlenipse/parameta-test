@@ -13,7 +13,7 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 public class SoapClient extends WebServiceGatewaySupport {
 
 
-    public SoapClient(@Value("${soap-service.url}/ws") String SERVICE_URL) {
+    public SoapClient(@Value("${soapservice-base.url}/soapservice/ws") String SERVICE_URL) {
         setDefaultUri(SERVICE_URL);
 
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
