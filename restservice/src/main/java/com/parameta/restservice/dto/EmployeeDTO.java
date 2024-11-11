@@ -51,13 +51,13 @@ public class EmployeeDTO implements Serializable {
     @NotNull(message = "La fecha de nacimiento es obligatoria")
     @Past(message = "La fecha de nacimiento debe ser anterior a la fecha actual")
     @JsonFormat(pattern = IConstants.DATE_FORMAT, timezone = IConstants.DATE_TIMEZONE)
-    @Schema(description = "Employee birth date", example = "1990-01-01")
+    @Schema(description = "Employee birth date", pattern = IConstants.DATE_FORMAT, example = "1990-01-01")
     private Date birthDate;
 
     @NotNull(message = "La fecha de contratación es obligatoria")
     @PastOrPresent(message = "La fecha de contratación debe ser anterior o igual a la fecha actual")
     @JsonFormat(pattern = IConstants.DATE_FORMAT, timezone = IConstants.DATE_TIMEZONE)
-    @Schema(description = "Employee hiring date", example = "2021-01-01")
+    @Schema(description = "Employee hiring date", pattern = IConstants.DATE_FORMAT, example = "2021-01-01")
     private Date hiringDate;
 
     @NotBlank(message = "El cargo es obligatorio")
