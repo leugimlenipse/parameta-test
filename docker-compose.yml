@@ -1,0 +1,27 @@
+# version: '3'
+
+services:
+  soapservice:
+    build: soapservice
+    ports:
+      - "8081:8081"
+    environment:
+      DB_URL: jdbc:mysql://ls-b04728c13c4007537b069e5f61db627ccb1317a1.c1m0uuiw86gb.us-east-1.rds.amazonaws.com:3306/dbmaster
+      DB_USERNAME: dbmasteruser
+      DB_PASSWORD: Dn~N+s&33nj(p}hE8N<;x~IBlPQ.2dqB
+      SERVER_PORT: 8081
+    restart: always
+  restservice:
+    build: restservice
+    depends_on:
+      - soapservice
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://ls-b04728c13c4007537b069e5f61db627ccb1317a1.c1m0uuiw86gb.us-east-1.rds.amazonaws.com:3306/dbmaster
+      DB_USERNAME: dbmasteruser
+      DB_PASSWORD: Dn~N+s&33nj(p}hE8N<;x~IBlPQ.2dqB
+      SERVER_PORT: 8080
+      SOAP_SERVICE_URL: http://soapservice:8081
+    restart: always
+
