@@ -106,7 +106,7 @@ Por medio de peticiones POST se puede enviar el cuerpo del mensaje con la repres
 Por medio de peticiones GET a la misma ruta, se puede enviar la misma representación del objeto usando parámetros de la petición:
 
 ```
-http://localhost:8080/restservice/api/v1/employee/register?names=checo&lastNames=perez&documentType=CC&documentNumber=112095&birthDate=2006-11-09&hiringDate=2021-02-15&position=DEVELOPER
+http://localhost:8080/restservice/api/v1/employee/register?names=checo&lastNames=perez&documentType=CC&documentNumber=112095&birthDate=2006-11-09&hiringDate=2021-02-15&position=DEVELOPER&salary=1562
 ```
 
 Cada petición, de ser procesada correctamente, devolverá el mismo objeto con campos adicionales de id del empleado registrado, edad y tiempo de vinculación a la compañía. Ejemplo:
