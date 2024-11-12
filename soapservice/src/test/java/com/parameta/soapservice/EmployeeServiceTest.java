@@ -46,6 +46,8 @@ public class EmployeeServiceTest {
     void whenRegisteringEmployee_AndInformationValidated_ThenRegisterEmployee() {
         // Given
         Employee employee = new Employee();
+        employee.setDocumentType("CC");
+        employee.setPosition("Developer");
         EmployeeRequest employeeRequest = new EmployeeRequest();
         employeeRequest.setEmployee(employee);
 
@@ -68,6 +70,8 @@ public class EmployeeServiceTest {
     void whenRegisteringEmployee_AndInformationInvalid_ReturnsNull() {
         // Given
         Employee employee = new Employee();
+        employee.setDocumentType("CC");
+        employee.setPosition("Developer");
         EmployeeRequest employeeRequest = new EmployeeRequest();
         employeeRequest.setEmployee(employee);
 
