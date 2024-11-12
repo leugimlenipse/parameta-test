@@ -25,8 +25,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Transactional
     public EmployeeModel registerEmployee(EmployeeRequest employeeRequest) {
 
-        var documentType = documentTypeRepository.findByCode(employeeRequest.getEmployee().getDocumentType());
-        var position = positionRepository.findByName(employeeRequest.getEmployee().getPosition());
+        var documentType = documentTypeRepository.findByCode(employeeRequest.getEmployee().getDocumentType().toUpperCase());
+        var position = positionRepository.findByName(employeeRequest.getEmployee().getPosition().toUpperCase());
 
         if (documentType.isPresent() && position.isPresent()) {
             EmployeeModel employeeModel = this.employeeMapper.toEmployeeModel(employeeRequest.getEmployee());
