@@ -78,6 +78,17 @@ Se recomienda abrir cada proyecto en una ventana de un IDE como IntelliJ o una t
 
 ## Uso
 
+En cuanto a tipos disponibles para documentos y cargos de empleado definidos en bases de datos, se tienen los siguientes disponibles:
+
+**Cargos:**
+
+* **DEVELOPER, PRODUCT MANAGER, SCRUM MASTER, MANAGER, DESIGNER, QA**
+
+**Tipos de documento:**
+
+* **CC**
+* **TI**
+
 ### Base URL
 
 Los servicios pueden ser probados directamente desde la interfaz de swagger mediante *http://localhost:8080/restservice/swagger-ui/index.html* (se debe tener ambos servicios en ejecución).
